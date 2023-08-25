@@ -1,0 +1,1 @@
+export type Layer<T extends { type: string } & object> = { id: string } & T;

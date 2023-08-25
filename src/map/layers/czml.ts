@@ -5,14 +5,15 @@ import {
   loadCZML,
 } from "../datasource/czml";
 import { Clock, clampCurrent } from "../clock";
+import { Layer } from "./types";
 
-export type CZMLLayer = {
+export type CZMLLayer = Layer<{
   type: "czml";
   url: string;
   property: {
     polygonOpacity: number;
   };
-};
+}>;
 
 export const handleCZML = async (
   map: Map,
@@ -28,7 +29,7 @@ export const handleCZML = async (
   });
 
   map.addLayer({
-    id: "czml",
+    id: layer.id,
     type: "fill-extrusion",
     source: "czml",
     paint: {
